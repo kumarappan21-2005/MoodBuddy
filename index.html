@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodBuddy Bot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #83a4d4, #b6fbff);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .chat-box {
+            background: #f9fbfd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border-color: #6c63ff;
+        }
+        .btn-primary:hover {
+            background-color: #574bda;
+            border-color: #574bda;
+        }
+        .hero-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #6c63ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Direct link to an image from Unsplash -->
+        <img src="https://source.unsplash.com/600x200/?happy,mood,wellbeing" alt="MoodBuddy Hero" class="hero-image">
+        <h2 class="text-center">MoodBuddy Bot</h2>
+        <div class="chat-box">
+            <form action="/analyze" method="post">
+                <div class="mb-3">
+                    <label for="message" class="form-label">How are you feeling?</label>
+                    <input type="text" class="form-control" id="message" name="message" placeholder="Tell us your mood..." required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+            {% if user_input %}
+                <div class="mt-4">
+                    <h4>You said: <span class="text-primary">"{{ user_input }}"</span></h4>
+                    <p><strong>Response:</strong> {{ response }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <p class="text-center mt-3 text-muted">Powered by MoodBuddy Bot</p>
+    </div>
+</body>
+</html>
